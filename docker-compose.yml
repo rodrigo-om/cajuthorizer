@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  web:
+    image: "rodrigoom/cajuthorizer:1.1"
+    ports:
+      - "9000:80"
+  mongodb:
+    image: mongo:4.0
+    hostname: "mongodb"
+    container_name: "cajuthorizer_mongodb"
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: cajuthorizer
+

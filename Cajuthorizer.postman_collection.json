@@ -1,0 +1,831 @@
+{
+	"info": {
+		"_postman_id": "2e91f5ea-70bf-49fc-b841-41bf8e50be04",
+		"name": "Cajuthorizer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/accounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"mealBalance\": 1000,\r\n    \"foodBalance\": 1000,\r\n    \"cultureBalance\": 1000,\r\n    \"cashBalance\": 1000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Authorize",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"account\": \"2\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/authorize",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"authorize"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization Scenarios",
+			"item": [
+				{
+					"name": "Enough Balance - Code 00",
+					"item": [
+						{
+							"name": "Benefit Has Balance",
+							"item": [
+								{
+									"name": "Enough Balance - No MCC Override",
+									"item": [
+										{
+											"name": "Meal purchase with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Culture purchase with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"5815\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Food purchase with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"5411\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Cash purchase with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"1111\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Enough Balance - MCCs Overriden",
+									"item": [
+										{
+											"name": "Meal purchase overriden by Merchant Name with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"1111\",\r\n\t\"merchant\": \"UBER EATS                   SAO PAULO BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Cash purchase overriden by Merchant Name with enough balance",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n\t\"account\": \"111\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PICPAY*BILHETEUNICO           GOIANIA BR\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:9000/authorize",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "9000",
+													"path": [
+														"authorize"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "CreateAccountForThisScenario",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": 111,\r\n    \"mealBalance\": 1000,\r\n    \"foodBalance\": 1000,\r\n    \"cultureBalance\": 1000,\r\n    \"cashBalance\": 1000\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/account",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"account"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Should be payed with Cash",
+							"item": [
+								{
+									"name": "CreateAccountForThisScenario",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": 222,\r\n    \"mealBalance\": 1,\r\n    \"foodBalance\": 1,\r\n    \"cultureBalance\": 1,\r\n    \"cashBalance\": 1000000\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/account",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"account"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Meal purchase should be payed with cash",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"222\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Culture purchase should be payed with cash",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"222\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5815\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Food purchase should be payed with cash",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"222\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5411\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Meal purchase overriden by Merchant Name should be payed with cash",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"222\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"1111\",\r\n\t\"merchant\": \"UBER EATS                   SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Not Enough Balance - Code 51",
+					"item": [
+						{
+							"name": "Should be Rejected",
+							"item": [
+								{
+									"name": "CreateAccountForThisScenario",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": 333,\r\n    \"mealBalance\": 100,\r\n    \"foodBalance\": 100,\r\n    \"cultureBalance\": 100,\r\n    \"cashBalance\": 100\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/account",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"account"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cash purchase without enough balance",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"333\",\r\n\t\"totalAmount\": 100000.00,\r\n\t\"mcc\": \"1111\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Meal purchase without enough balance",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"333\",\r\n\t\"totalAmount\": 10000.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Culture purchase without enough balance",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"333\",\r\n\t\"totalAmount\": 10000.00,\r\n\t\"mcc\": \"5815\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Food purchase without enough balance",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"account\": \"333\",\r\n\t\"totalAmount\": 100000.00,\r\n\t\"mcc\": \"5411\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9000/authorize",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"authorize"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Invalid Transactions - Code 07",
+					"item": [
+						{
+							"name": "Invalid Merchant Name",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"1\",\r\n\t\"totalAmount\": 10.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"Invalid\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"invalid\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid MCC",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"2\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"invalid\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Account empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Merchant empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"2\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"5811\",\r\n\t\"merchant\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mcc Empty",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"2\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MCC longer than 4 digits",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"account\": \"2\",\r\n\t\"totalAmount\": 100.00,\r\n\t\"mcc\": \"58112131231\",\r\n\t\"merchant\": \"PADARIA DO ZE               SAO PAULO BR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/authorize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"authorize"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

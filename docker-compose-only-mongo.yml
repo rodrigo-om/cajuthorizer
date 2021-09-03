@@ -1,0 +1,13 @@
+#File used to test the application under sbt run, so we only want mongodb to be up.
+version: '3.5'
+
+services:
+  mongodb:
+    image: mongo:4.0
+    hostname: "mongodb"
+    container_name: "cajuthorizer_mongodb"
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: cajuthorizer
+

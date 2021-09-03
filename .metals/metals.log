@@ -1,0 +1,8 @@
+[0m2021.06.02 19:44:53 INFO  Started: Metals version 0.10.4 in workspace 'C:\Users\Rodrigo\workspace\caju-authorizer\cajuthorizer' for client Visual Studio Code 1.55.2.[0m
+[0m2021.06.02 19:44:55 INFO  time: initialize in 1.79s[0m
+[0m2021.06.02 19:44:55 WARN  Build server is not auto-connectable.[0m
+[0m2021.06.07 00:03:24 INFO  shutting down Metals[0m
+[0m2021.06.07 02:49:36 INFO  Started: Metals version 0.10.4 in workspace 'C:\Users\Rodrigo\workspace\caju-authorizer\cajuthorizer' for client Visual Studio Code 1.56.2.[0m
+[0m2021.06.07 02:49:38 INFO  time: initialize in 1.96s[0m
+[0m2021.06.07 02:49:38 WARN  Build server is not auto-connectable.[0m
+[0m2021.06.07 02:49:38 INFO  skipping build import with status 'Requested'[0m
